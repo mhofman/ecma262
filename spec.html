@@ -13221,7 +13221,7 @@
         [[Call]] (
           _thisArgument_: an ECMAScript language value,
           _argumentsList_: a List of ECMAScript language values,
-        )
+        ): a Completion Record normally containing an ECMAScript language value
       </h1>
       <dl class="header">
         <dt>for</dt>
@@ -13252,7 +13252,7 @@
           PrepareForOrdinaryCall (
             _F_: a function object,
             _newTarget_: an Object or *undefined*,
-          )
+          ): an execution context
         </h1>
         <dl class="header">
         </dl>
@@ -13280,7 +13280,7 @@
             _F_: a function object,
             _calleeContext_: an execution context,
             _thisArgument_: an ECMAScript language value,
-          )
+          ): ~unused~
         </h1>
         <dl class="header">
         </dl>
@@ -13300,7 +13300,8 @@
               1. NOTE: ToObject produces wrapper objects using _calleeRealm_.
           1. Assert: _localEnv_ is a function Environment Record.
           1. Assert: The next step never returns an abrupt completion because _localEnv_.[[ThisBindingStatus]] is not ~initialized~.
-          1. Return _localEnv_.BindThisValue(_thisValue_).
+          1. Perform ! _localEnv_.BindThisValue(_thisValue_).
+          1. Return ~unused~.
         </emu-alg>
       </emu-clause>
 
@@ -13309,7 +13310,7 @@
           Runtime Semantics: EvaluateBody (
             _functionObject_: unknown,
             _argumentsList_: a List,
-          )
+          ): a Completion Record normally containing an ECMAScript language value
         </h1>
         <dl class="header">
         </dl>
@@ -13374,7 +13375,7 @@
           OrdinaryCallEvaluateBody (
             _F_: a function object,
             _argumentsList_: a List,
-          )
+          ): a Completion Record normally containing an ECMAScript language value
         </h1>
         <dl class="header">
         </dl>
@@ -13389,7 +13390,7 @@
         [[Construct]] (
           _argumentsList_: a List of ECMAScript language values,
           _newTarget_: a constructor,
-        )
+        ): a Completion Record normally containing an ECMAScript language value
       </h1>
       <dl class="header">
         <dt>for</dt>
@@ -13430,7 +13431,7 @@
           _thisMode_: ~lexical-this~ or ~non-lexical-this~,
           _Scope_: an Environment Record,
           _PrivateScope_: a PrivateEnvironment Record or *null*,
-        )
+        ): a function object
       </h1>
       <dl class="header">
         <dt>description</dt>
@@ -13458,7 +13459,7 @@
         1. Set _F_.[[PrivateMethods]] to a new empty List.
         1. Set _F_.[[ClassFieldInitializerName]] to ~empty~.
         1. Let _len_ be the ExpectedArgumentCount of _ParameterList_.
-        1. Perform ! SetFunctionLength(_F_, _len_).
+        1. Perform SetFunctionLength(_F_, _len_).
         1. Return _F_.
       </emu-alg>
     </emu-clause>
@@ -13468,7 +13469,7 @@
         AddRestrictedFunctionProperties (
           _F_: a function object,
           _realm_: a Realm Record,
-        )
+        ): ~unused~
       </h1>
       <dl class="header">
       </dl>
@@ -13476,7 +13477,8 @@
         1. Assert: _realm_.[[Intrinsics]].[[%ThrowTypeError%]] exists and has been initialized.
         1. Let _thrower_ be _realm_.[[Intrinsics]].[[%ThrowTypeError%]].
         1. Perform ! DefinePropertyOrThrow(_F_, *"caller"*, PropertyDescriptor { [[Get]]: _thrower_, [[Set]]: _thrower_, [[Enumerable]]: *false*, [[Configurable]]: *true* }).
-        1. Return ! DefinePropertyOrThrow(_F_, *"arguments"*, PropertyDescriptor { [[Get]]: _thrower_, [[Set]]: _thrower_, [[Enumerable]]: *false*, [[Configurable]]: *true* }).
+        1. Perform ! DefinePropertyOrThrow(_F_, *"arguments"*, PropertyDescriptor { [[Get]]: _thrower_, [[Set]]: _thrower_, [[Enumerable]]: *false*, [[Configurable]]: *true* }).
+        1. Return ~unused~.
       </emu-alg>
 
       <emu-clause id="sec-%throwtypeerror%">
@@ -13497,7 +13499,7 @@
           _F_: an ECMAScript function object or a built-in function object,
           optional _writablePrototype_: a Boolean,
           optional _prototype_: an Object,
-        )
+        ): ~unused~
       </h1>
       <dl class="header">
         <dt>description</dt>
@@ -13516,7 +13518,7 @@
           1. Set _prototype_ to ! OrdinaryObjectCreate(%Object.prototype%).
           1. Perform ! DefinePropertyOrThrow(_prototype_, *"constructor"*, PropertyDescriptor { [[Value]]: _F_, [[Writable]]: _writablePrototype_, [[Enumerable]]: *false*, [[Configurable]]: *true* }).
         1. Perform ! DefinePropertyOrThrow(_F_, *"prototype"*, PropertyDescriptor { [[Value]]: _prototype_, [[Writable]]: _writablePrototype_, [[Enumerable]]: *false*, [[Configurable]]: *false* }).
-        1. Return NormalCompletion(*undefined*).
+        1. Return ~unused~.
       </emu-alg>
     </emu-clause>
 
@@ -13524,14 +13526,14 @@
       <h1>
         MakeClassConstructor (
           _F_: an ECMAScript function object,
-        )
+        ): ~unused~
       </h1>
       <dl class="header">
       </dl>
       <emu-alg>
         1. Assert: _F_.[[IsClassConstructor]] is *false*.
         1. Set _F_.[[IsClassConstructor]] to *true*.
-        1. Return NormalCompletion(*undefined*).
+        1. Return ~unused~.
       </emu-alg>
     </emu-clause>
 
@@ -13540,7 +13542,7 @@
         MakeMethod (
           _F_: an ECMAScript function object,
           _homeObject_: an Object,
-        )
+        ): ~unused~
       </h1>
       <dl class="header">
         <dt>description</dt>
@@ -13548,7 +13550,7 @@
       </dl>
       <emu-alg>
         1. Set _F_.[[HomeObject]] to _homeObject_.
-        1. Return NormalCompletion(*undefined*).
+        1. Return ~unused~.
       </emu-alg>
     </emu-clause>
 
@@ -13559,7 +13561,7 @@
           _key_: a property key or Private Name,
           _closure_: a function object,
           _enumerable_: a Boolean,
-        )
+        ): a Private Name or ~unused~
       </h1>
       <dl class="header">
       </dl>
@@ -13569,7 +13571,7 @@
         1. Else,
           1. Let _desc_ be the PropertyDescriptor { [[Value]]: _closure_, [[Writable]]: *true*, [[Enumerable]]: _enumerable_, [[Configurable]]: *true* }.
           1. Perform ? DefinePropertyOrThrow(_homeObject_, _key_, _desc_).
-          1. Return ~empty~.
+          1. Return ~unused~.
       </emu-alg>
     </emu-clause>
 
@@ -13579,7 +13581,7 @@
           _F_: a function object,
           _name_: a property key or Private Name,
           optional _prefix_: a String,
-        )
+        ): ~unused~
       </h1>
       <dl class="header">
         <dt>description</dt>
@@ -13599,7 +13601,8 @@
           1. Set _name_ to the string-concatenation of _prefix_, the code unit 0x0020 (SPACE), and _name_.
           1. If _F_ has an [[InitialName]] internal slot, then
             1. Optionally, set _F_.[[InitialName]] to _name_.
-        1. Return ! DefinePropertyOrThrow(_F_, *"name"*, PropertyDescriptor { [[Value]]: _name_, [[Writable]]: *false*, [[Enumerable]]: *false*, [[Configurable]]: *true* }).
+        1. Perform ! DefinePropertyOrThrow(_F_, *"name"*, PropertyDescriptor { [[Value]]: _name_, [[Writable]]: *false*, [[Enumerable]]: *false*, [[Configurable]]: *true* }).
+        1. Return ~unused~.
       </emu-alg>
     </emu-clause>
 
@@ -13608,7 +13611,7 @@
         SetFunctionLength (
           _F_: a function object,
           _length_: a non-negative integer or +&infin;,
-        )
+        ): ~unused~
       </h1>
       <dl class="header">
         <dt>description</dt>
@@ -13616,7 +13619,8 @@
       </dl>
       <emu-alg>
         1. Assert: _F_ is an extensible object that does not have a *"length"* own property.
-        1. Return ! DefinePropertyOrThrow(_F_, *"length"*, PropertyDescriptor { [[Value]]: 𝔽(_length_), [[Writable]]: *false*, [[Enumerable]]: *false*, [[Configurable]]: *true* }).
+        1. Perform ! DefinePropertyOrThrow(_F_, *"length"*, PropertyDescriptor { [[Value]]: 𝔽(_length_), [[Writable]]: *false*, [[Enumerable]]: *false*, [[Configurable]]: *true* }).
+        1. Return ~unused~.
       </emu-alg>
     </emu-clause>
 
@@ -13625,7 +13629,7 @@
         FunctionDeclarationInstantiation (
           _func_: a function object,
           _argumentsList_: unknown,
-        )
+        ): a Completion Record normally containing ~unused~
       </h1>
       <dl class="header">
         <dt>description</dt>
@@ -13748,7 +13752,7 @@
           1. Let _fn_ be the sole element of the BoundNames of _f_.
           1. Let _fo_ be InstantiateFunctionObject of _f_ with arguments _lexEnv_ and _privateEnv_.
           1. Perform ! _varEnv_.SetMutableBinding(_fn_, _fo_, *false*).
-        1. Return NormalCompletion(~empty~).
+        1. Return NormalCompletion(~unused~).
       </emu-alg>
       <emu-note>
         <p><emu-xref href="#sec-block-level-function-declarations-web-legacy-compatibility-semantics"></emu-xref> provides an extension to the above algorithm that is necessary for backwards compatibility with web browser implementations of ECMAScript that predate ECMAScript 2015.</p>
@@ -13842,11 +13846,11 @@
         1. Set _func_.[[Extensible]] to *true*.
         1. Set _func_.[[Realm]] to _realm_.
         1. Set _func_.[[InitialName]] to *null*.
-        1. Perform ! SetFunctionLength(_func_, _length_).
+        1. Perform SetFunctionLength(_func_, _length_).
         1. If _prefix_ is not present, then
-          1. Perform ! SetFunctionName(_func_, _name_).
+          1. Perform SetFunctionName(_func_, _name_).
         1. Else,
-          1. Perform ! SetFunctionName(_func_, _name_, _prefix_).
+          1. Perform SetFunctionName(_func_, _name_, _prefix_).
         1. Return _func_.
       </emu-alg>
       <p>Each built-in function defined in this specification is created by calling the CreateBuiltinFunction abstract operation.</p>
@@ -23657,7 +23661,7 @@
       <emu-grammar>MethodDefinition : ClassElementName `(` UniqueFormalParameters `)` `{` FunctionBody `}`</emu-grammar>
       <emu-alg>
         1. Let _methodDef_ be ? DefineMethod of |MethodDefinition| with argument _object_.
-        1. Perform ! SetFunctionName(_methodDef_.[[Closure]], _methodDef_.[[Key]]).
+        1. Perform SetFunctionName(_methodDef_.[[Closure]], _methodDef_.[[Key]]).
         1. Return ? DefineMethodProperty(_object_, _methodDef_.[[Key]], _methodDef_.[[Closure]], _enumerable_).
       </emu-alg>
       <emu-grammar>MethodDefinition : `get` ClassElementName `(` `)` `{` FunctionBody `}`</emu-grammar>
@@ -23719,8 +23723,8 @@
         1. Let _privateScope_ be the running execution context's PrivateEnvironment.
         1. Let _sourceText_ be the source text matched by |AsyncGeneratorMethod|.
         1. Let _closure_ be ! OrdinaryFunctionCreate(%AsyncGeneratorFunction.prototype%, _sourceText_, |UniqueFormalParameters|, |AsyncGeneratorBody|, ~non-lexical-this~, _scope_, _privateScope_).
-        1. Perform ! MakeMethod(_closure_, _object_).
-        1. Perform ! SetFunctionName(_closure_, _propKey_).
+        1. Perform MakeMethod(_closure_, _object_).
+        1. Perform SetFunctionName(_closure_, _propKey_).
         1. Let _prototype_ be ! OrdinaryObjectCreate(%AsyncGeneratorFunction.prototype.prototype%).
         1. Perform ! DefinePropertyOrThrow(_closure_, *"prototype"*, PropertyDescriptor { [[Value]]: _prototype_, [[Writable]]: *true*, [[Enumerable]]: *false*, [[Configurable]]: *false* }).
         1. Return ? DefineMethodProperty(_object_, _propKey_, _closure_, _enumerable_).
@@ -23735,8 +23739,8 @@
         1. Let _privateScope_ be the running execution context's PrivateEnvironment.
         1. Let _sourceText_ be the source text matched by |AsyncMethod|.
         1. Let _closure_ be ! OrdinaryFunctionCreate(%AsyncFunction.prototype%, _sourceText_, |UniqueFormalParameters|, |AsyncFunctionBody|, ~non-lexical-this~, _scope_, _privateScope_).
-        1. Perform ! MakeMethod(_closure_, _object_).
-        1. Perform ! SetFunctionName(_closure_, _propKey_).
+        1. Perform MakeMethod(_closure_, _object_).
+        1. Perform SetFunctionName(_closure_, _propKey_).
         1. Return ? DefineMethodProperty(_object_, _propKey_, _closure_, _enumerable_).
       </emu-alg>
     </emu-clause>
@@ -24090,7 +24094,7 @@
         1. Let _name_ be StringValue of |BindingIdentifier|.
         1. Let _sourceText_ be the source text matched by |AsyncGeneratorDeclaration|.
         1. Let _F_ be ! OrdinaryFunctionCreate(%AsyncGeneratorFunction.prototype%, _sourceText_, |FormalParameters|, |AsyncGeneratorBody|, ~non-lexical-this~, _scope_, _privateScope_).
-        1. Perform ! SetFunctionName(_F_, _name_).
+        1. Perform SetFunctionName(_F_, _name_).
         1. Let _prototype_ be ! OrdinaryObjectCreate(%AsyncGeneratorFunction.prototype.prototype%).
         1. Perform ! DefinePropertyOrThrow(_F_, *"prototype"*, PropertyDescriptor { [[Value]]: _prototype_, [[Writable]]: *true*, [[Enumerable]]: *false*, [[Configurable]]: *false* }).
         1. Return _F_.
@@ -24145,7 +24149,7 @@
         1. Let _privateScope_ be the running execution context's PrivateEnvironment.
         1. Let _sourceText_ be the source text matched by |AsyncGeneratorExpression|.
         1. Let _closure_ be ! OrdinaryFunctionCreate(%AsyncGeneratorFunction.prototype%, _sourceText_, |FormalParameters|, |AsyncGeneratorBody|, ~non-lexical-this~, _funcEnv_, _privateScope_).
-        1. Perform ! SetFunctionName(_closure_, _name_).
+        1. Perform SetFunctionName(_closure_, _name_).
         1. Let _prototype_ be ! OrdinaryObjectCreate(%AsyncGeneratorFunction.prototype.prototype%).
         1. Perform ! DefinePropertyOrThrow(_closure_, *"prototype"*, PropertyDescriptor { [[Value]]: _prototype_, [[Writable]]: *true*, [[Enumerable]]: *false*, [[Configurable]]: *false* }).
         1. Perform ! _funcEnv_.InitializeBinding(_name_, _closure_).
@@ -24801,9 +24805,9 @@
         1. Else,
           1. Let _constructorInfo_ be ! DefineMethod of _constructor_ with arguments _proto_ and _constructorParent_.
           1. Let _F_ be _constructorInfo_.[[Closure]].
-          1. Perform ! MakeClassConstructor(_F_).
-          1. Perform ! SetFunctionName(_F_, _className_).
-        1. Perform ! MakeConstructor(_F_, *false*, _proto_).
+          1. Perform MakeClassConstructor(_F_).
+          1. Perform SetFunctionName(_F_, _className_).
+        1. Perform MakeConstructor(_F_, *false*, _proto_).
         1. If |ClassHeritage?| is present, set _F_.[[ConstructorKind]] to ~derived~.
         1. Perform ! CreateMethodProperty(_proto_, *"constructor"*, _F_).
         1. If |ClassBody?| is not present, let _elements_ be a new empty List.
@@ -25012,7 +25016,7 @@
         1. Let _name_ be StringValue of |BindingIdentifier|.
         1. Let _sourceText_ be the source text matched by |AsyncFunctionDeclaration|.
         1. Let _F_ be ! OrdinaryFunctionCreate(%AsyncFunction.prototype%, _sourceText_, |FormalParameters|, |AsyncFunctionBody|, ~non-lexical-this~, _scope_, _privateScope_).
-        1. Perform ! SetFunctionName(_F_, _name_).
+        1. Perform SetFunctionName(_F_, _name_).
         1. Return _F_.
       </emu-alg>
       <emu-grammar>
@@ -25021,7 +25025,7 @@
       <emu-alg>
         1. Let _sourceText_ be the source text matched by |AsyncFunctionDeclaration|.
         1. Let _F_ be ! OrdinaryFunctionCreate(%AsyncFunction.prototype%, _sourceText_, |FormalParameters|, |AsyncFunctionBody|, ~non-lexical-this~, _scope_, _privateScope_).
-        1. Perform ! SetFunctionName(_F_, *"default"*).
+        1. Perform SetFunctionName(_F_, *"default"*).
         1. Return _F_.
       </emu-alg>
     </emu-clause>
@@ -25058,7 +25062,7 @@
         1. Let _privateScope_ be the running execution context's PrivateEnvironment.
         1. Let _sourceText_ be the source text matched by |AsyncFunctionExpression|.
         1. Let _closure_ be ! OrdinaryFunctionCreate(%AsyncFunction.prototype%, _sourceText_, |FormalParameters|, |AsyncFunctionBody|, ~non-lexical-this~, _funcEnv_, _privateScope_).
-        1. Perform ! SetFunctionName(_closure_, _name_).
+        1. Perform SetFunctionName(_closure_, _name_).
         1. Perform ! _funcEnv_.InitializeBinding(_name_, _closure_).
         1. Return _closure_.
       </emu-alg>
@@ -30058,7 +30062,7 @@
                 1. Assert: _targetLenAsInt_ is finite.
                 1. Let _argCount_ be the number of elements in _args_.
                 1. Set _L_ to max(_targetLenAsInt_ - _argCount_, 0).
-          1. Perform ! SetFunctionLength(_F_, _L_).
+          1. Perform SetFunctionLength(_F_, _L_).
           1. Let _targetName_ be ? Get(_Target_, *"name"*).
           1. If Type(_targetName_) is not String, set _targetName_ to the empty String.
           1. Perform SetFunctionName(_F_, _targetName_, *"bound"*).
